@@ -1,0 +1,40 @@
+.logo {
+  height: 80px;   
+  width: auto;    
+  margin-right: 10px;
+  vertical-align: middle; 
+}
+
+header {
+  background: #1af182;
+  color: rgb(90, 67, 67);
+  padding: 25px;
+  margin-top:0;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+nav h1{
+margin-left: 160px;}
+ul{
+    display: flex;
+    list-style-type: none;
+    width: 200px;
+    justify-content: space-between;
+}
+ul li a{
+    text-decoration: none;
+    color: rgb(63, 39, 39) ;
+    padding: 10px;
+    display: ruby-text;
+}
+.active{
+    background-color: rgb(234, 236, 231);
+    border-radius: 5px;
+    font-size:larger;
+    padding: 10px;
+
+}

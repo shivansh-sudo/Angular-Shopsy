@@ -1,0 +1,87 @@
+.product-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.product-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.product-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.product-image img {
+  width: 260px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background-color: #eee8e8;
+}
+
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+.discountPercentage {
+  color: #e53935; 
+  font-weight: bold;
+}
+
+.details-left {
+  flex: 1;
+}
+
+.details-left .brand {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.details-left .description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.details-right {
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.details-right .price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0f0101;
+}
+
+.add-to-cart {
+  background: #2e7d32;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background: #1b5e20;
+}

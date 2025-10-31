@@ -1,0 +1,33 @@
+<div class="product-container" *ngIf="product">
+
+  <h2 class="product-title">{{ product.title }}</h2>
+  
+  <div class="product-image">
+  <img [src]="product.thumbnail" alt="{{ product.title }}" />
+  </div>
+  <div class="product-details">
+    <div class="details-left">
+      <p class="brand"><strong>Brand:</strong>{{ product.brand }}</p>
+      <p class="description">
+        {{ product.description }}
+      </p>
+    </div>
+<div class="details-right">
+  
+      <p class="price"><strong>Price:</strong>{{ product.price }}</p>
+      <p  class="discountPercentage" *ngIf="product.discountPercentage">
+    Discount: {{ product.discountPercentage }}% OFF
+  </p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+<!-- </div>
+
+<div class="product-details" *ngIf="product">
+  <h2>{{ product.title }}</h2>
+  <img [src]="product.thumbnail" alt="{{ product.title }}" />
+  <p>{{ product.description }}</p>
+  <p>Price: {{ product.price }} $</p> -->
+
+   <h3>Rating: {{ product.rating }} / 5 ⭐</h3>
+</div>

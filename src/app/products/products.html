@@ -1,0 +1,40 @@
+<div class="search-container">
+  <input
+    class="search-input"
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="searchProducts()"
+    placeholder="Search products..."
+  />
+
+  <select 
+    class="category-select"
+    [(ngModel)]="selectedCategory" 
+    (change)="filterByCategory()"
+  >
+    <option value="all">All Categories</option>
+    <option *ngFor="let cat of categories" [value]="cat">
+      {{ cat | titlecase }}
+    </option>
+  </select>
+</div>
+
+<div class="product-list">
+  <div *ngFor="let product of filteredProducts" class="product-card">
+    <img [src]="product.thumbnail" alt="{{ product.title }}" />
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.price }} $</p>
+    <a [routerLink]="['/', product.id]">View Details</a>
+    <button (click)="addToCart(product)">Add to Cart</button>
+  </div>
+ 
+</div>
+
+<!-- products.component.html
+<div *ngFor="let product of products" class="product-card">
+  <h3>{{ product.name }}</h3>
+  <p>{{ product.price }} ₹</p>
+  <button (click)="addToCart(product)">Add to Cart</button>
+</div>
+
+<a routerLink="/cart">Go to Cart</a> -->

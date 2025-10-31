@@ -1,0 +1,56 @@
+<div class="contact-container">
+  <h2>Contact Us</h2>
+  <p>
+    Have questions, feedback, or need help with your order?  
+    Fill out the form below and we’ll get back to you shortly.
+  </p>
+
+  <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="name"
+        name="name"
+        required
+        placeholder="Enter your name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Your Email</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        required
+        placeholder="Enter your email"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="message">Your Message</label>
+      <textarea
+        id="message"
+        [(ngModel)]="message"
+        name="message"
+        required
+        placeholder="Type your message..."
+      ></textarea>
+    </div>
+
+    <button type="submit" [disabled]="!contactForm.form.valid">
+      Send Message
+    </button>
+  </form>
+
+  <div class="contact-info">
+    <h3>📍 Our Store</h3>
+    <p>Infinity Store Everything Under One Roof</p>
+    <p>123 Green Street, Moradabad, India</p>
+    <p>📞 +91 98765 43210</p>
+    <p>📧 support@freshmart.com</p>
+  </div>
+</div>

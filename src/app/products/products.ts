@@ -14,10 +14,13 @@ import { HttpClient } from '@angular/common/http';
 export class Products {
   products: any[] = [];
   filteredProducts: any[] = [];
+  paginatedProducts: any[] = [];
   categories: string[] = [];   
   selectedCategory: string = 'all'; 
 
   searchTerm: string = '';
+  currentPage: number = 1;
+  itemsPerPage: number = 8;
 
    addToCart(product: any) {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -31,10 +34,10 @@ export class Products {
   ngOnInit() {
     this.http.get<any>('https://dummyjson.com/products').subscribe((data) => {
       this.products = data.products;
-      this.filteredProducts = this.products;
+      this.filteredProducts = [...this.products];
 
-      // extract unique categories
-      this.categories = Array.from(new Set(this.products.map(p => p.category)));
+      this.categories = [...new Set(this.products.map((p) => p.category))];
+      this.updatePagination();
     });
   }
 
@@ -43,7 +46,15 @@ export class Products {
   }
 
   filterByCategory() {
-    this.applyFilters();
+    if (this.selectedCategory === 'all') {
+      this.filteredProducts = this.products;
+    } else {
+      this.filteredProducts = this.products.filter(
+        (p) => p.category === this.selectedCategory
+      );
+    }
+    this.currentPage = 1;
+    this.updatePagination();
   }
 
   private applyFilters() {
@@ -51,9 +62,26 @@ export class Products {
       .filter((p) =>
         p.title.toLowerCase().includes(this.searchTerm.toLowerCase())
       )
-      .filter((p) =>
-        this.selectedCategory === 'all' ? true : p.category === this.selectedCategory
-      );
+      this.currentPage = 1;
+    this.updatePagination();
       
+  }
+  updatePagination() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.paginatedProducts = this.filteredProducts.slice(start, end);
+  }
+
+  nextPage() {
+    if (this.currentPage * this.itemsPerPage < this.filteredProducts.length) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+}
+prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination();
+    }
   }
 }

@@ -20,7 +20,7 @@
 </div>
 
 <div class="product-list">
-  <div *ngFor="let product of filteredProducts" class="product-card">
+  <div *ngFor="let product of paginatedProducts" class="product-card">
     <img [src]="product.thumbnail" alt="{{ product.title }}" />
     <h3>{{ product.title }}</h3>
     <p>{{ product.price }} $</p>
@@ -28,6 +28,16 @@
     <button (click)="addToCart(product)">Add to Cart</button>
   </div>
  
+</div>
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }}</span>
+  <button 
+    (click)="nextPage()" 
+    [disabled]="currentPage * itemsPerPage >= filteredProducts.length"
+  >
+    Next
+  </button>
 </div>
 
 <!-- products.component.html

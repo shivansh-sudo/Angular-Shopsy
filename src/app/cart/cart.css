@@ -1,0 +1,148 @@
+/* Main container */
+.cart-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h2 {
+  margin-bottom: 20px;
+  color: #2e7d32; /* Your green color */
+  text-align: center;
+  font-size: 2em;
+}
+
+.cart-empty-message {
+  text-align: center;
+  font-size: 1.2em;
+  color: #555;
+  padding: 20px 0;
+}
+
+/* Styles for each item in the cart */
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+  border: 1px solid #ddd;
+}
+
+.item-details {
+  flex-grow: 1; 
+}
+
+.item-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.item-price {
+  font-size: 1em;
+  color: #777;
+  margin: 0 0 10px 0;
+}
+
+.item-quantity {
+  font-size: 1em;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Style for the 'Remove' button */
+.remove-item-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 10px;
+  color: #c62828; 
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: text-decoration 0.2s ease;
+}
+
+.remove-item-button:hover {
+  text-decoration: underline;
+}
+
+.item-total {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* Styles for the summary section */
+.cart-summary {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #2e7d32; /* Green line */
+}
+
+.summary-title {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.summary-line p {
+  margin: 0;
+}
+
+.summary-total {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #2e7d32; 
+}
+
+/* Style for the 'Clear Cart' button */
+.clear-cart-button {
+  display: block;
+  width: auto; 
+  min-width: 150px;
+  margin-left: auto; /* Pushes it to the right */
+  padding: 12px 20px;
+  background: #c62828; /* Red */
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.clear-cart-button:hover {
+  background: #b71c1c;
+}

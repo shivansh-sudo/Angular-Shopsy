@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core'; // New: imported injectimport { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CartService } from '../cart.service/cart.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, HttpClientModule],
   templateUrl: './products.html',
   styleUrl: './products.css'
 })
@@ -19,11 +21,12 @@ export class Products {
 
   searchTerm: string = '';
 
-   addToCart(product: any) {
-    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(product.name + ' added to cart!');
+  // New: Inject the CartService
+  private cartService = inject(CartService);
+
+  // This function now just calls the service
+  addToCart(product: any) {
+    this.cartService.addToCart(product); 
   }
   
   constructor(private http: HttpClient) {}

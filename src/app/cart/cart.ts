@@ -1,19 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule, CurrencyPipe } from '@angular/common'; // <-- Import CurrencyPipe
+import { CartService } from '../cart.service/cart.service';
 
 @Component({
   selector: 'app-cart',
+  standalone: true,
+  imports: [CommonModule, CurrencyPipe], // <-- Add CurrencyPipe here
   templateUrl: './cart.html',
-  styleUrls: ['./cart.css']
+  styleUrl: './cart.css'
 })
-export class CartComponent {
-  items: any[] = [];
+export class Cart {
 
-  constructor() {
-    this.items = JSON.parse(localStorage.getItem('cart') || '[]');
+  private cartService = inject(CartService);
+
+  constructor() { }
+
+  /**
+   * Gets the fresh list of items from the service.
+   */
+  getItems(): any[] {
+    return this.cartService.getItems();
   }
 
-  clearCart() {
-    localStorage.removeItem('cart');
-    this.items = [];
+  /**
+   * Calculates the total price of all items in the cart.
+   */
+  getTotalPrice(): number {
+    return this.cartService.getItems().reduce((total, item) => {
+      return total + (item.price * item.quantity);
+    }, 0);
+  }
+
+  /**
+   * Calls the service to remove one specific item.
+   */
+  removeProduct(item: any): void {
+    this.cartService.removeProduct(item);
+  }
+
+  /**
+   * Calls the service to clear the entire cart.
+   */
+  clearCart(): void {
+    this.cartService.clearCart();
   }
 }

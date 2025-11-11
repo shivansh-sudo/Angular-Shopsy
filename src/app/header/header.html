@@ -5,25 +5,54 @@
     <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" 
          alt="Store Logo" 
          class="logo">
-        </a></div>
+        </a>
+      </div>
     <h1>Infinity Store Everything Under One Roof</h1> 
+
     <ul>
-        <!-- <a [routerLinkActiveOptions="{exact:true}"]routerLinkActive="active" routerLink="products">Home</a>   // for default active link to make only when the exact link match-->
+
   <li>
   
     <a routerLinkActive="active" routerLink="products">Home</a>
+
   </li>
   <li>
+
     <a routerLinkActive="active" routerLink="about">About</a>
+
   </li>
+
   <li>
+
     <a routerLinkActive="active" routerLink="contact-us">Contact Us</a>
+
   </li>
-<li>
+
+  <li>
+
     <a routerLinkActive="active" routerLink="cart">Cart</a>
+
   </li>
+
+<!-- </li> -->
+
+      <li *ngIf="!isUserLoggedIn()">
+        <a routerLinkActive="active" routerLink="login">Login</a>
+      </li>
+      
+      <li *ngIf="isUserLoggedIn()">
+        <a (click)="logout()" class="logout-button">Logout</a>
+      </li>
+
+
+  <!-- <li>
+
+    <a routerLinkActive="active" routerLink="login">Login</a>
+
+  </li> -->
 
 </ul>
 </nav>
 </header>
+
 
